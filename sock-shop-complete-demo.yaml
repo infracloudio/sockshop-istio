@@ -1,5 +1,3 @@
-# Complete yaml spec for sock-shop deployment on k8s along with changes required to for 
-# deployment to be suitable for Istio
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -135,7 +133,7 @@ spec:
           - name: MYSQL_DATABASE
             value: socksdb
         ports:
-        - name: mysql
+        - name: tcp-dbport
           containerPort: 3306
       nodeSelector:
         beta.kubernetes.io/os: linux
@@ -152,7 +150,8 @@ spec:
     # the port that this service should serve on
   - port: 3306
     targetPort: 3306
-    name: dbport
+    name: tcp-dbport
+    protocol: TCP
   selector:
     name: catalogue-db
   clusterIP: None
@@ -173,7 +172,7 @@ spec:
     spec:
       containers:
       - name: catalogue
-        image: vinayakinfrac/catalogue:latest2
+        image: weaveworksdemos/catalogue:0.3.5
         ports:
         - containerPort: 80
         securityContext:
