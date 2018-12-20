@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         name: carts-db
+        version: v1
     spec:
       containers:
       - name: carts-db
@@ -65,6 +66,7 @@ spec:
     metadata:
       labels:
         name: carts
+        version: v1
     spec:
       containers:
       - name: carts
@@ -123,6 +125,7 @@ spec:
     metadata:
       labels:
         name: catalogue-db
+        version: v1
     spec:
       containers:
       - name: catalogue-db
@@ -169,6 +172,7 @@ spec:
     metadata:
       labels:
         name: catalogue
+        version: v1
     spec:
       containers:
       - name: catalogue
@@ -213,6 +217,7 @@ spec:
     metadata:
       labels:
         name: front-end
+        version: v1
     spec:
       containers:
       - name: front-end
@@ -262,6 +267,7 @@ spec:
     metadata:
       labels:
         name: orders-db
+        version: v1
     spec:
       containers:
       - name: orders-db
@@ -316,6 +322,7 @@ spec:
     metadata:
       labels:
         name: orders
+        version: v1
     spec:
       containers:
       - name: orders
@@ -374,6 +381,7 @@ spec:
     metadata:
       labels:
         name: payment
+        version: v1
     spec:
       containers:
       - name: payment
@@ -420,6 +428,7 @@ spec:
     metadata:
       labels:
         name: queue-master
+        version: v1
     spec:
       containers:
       - name: queue-master
@@ -459,6 +468,7 @@ spec:
     metadata:
       labels:
         name: rabbitmq
+        version: v1
     spec:
       containers:
       - name: rabbitmq
@@ -509,6 +519,7 @@ spec:
     metadata:
       labels:
         name: shipping
+        version: v1
     spec:
       containers:
       - name: shipping
@@ -567,6 +578,7 @@ spec:
     metadata:
       labels:
         name: user-db
+        version: v1
     spec:
       containers:
       - name: user-db
@@ -621,6 +633,7 @@ spec:
     metadata:
       labels:
         name: user
+        version: v1
     spec:
       containers:
       - name: user

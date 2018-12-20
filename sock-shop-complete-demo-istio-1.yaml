@@ -16,6 +16,7 @@ spec:
       creationTimestamp: null
       labels:
         name: carts-db
+        version: v1
     spec:
       containers:
       - image: mongo
@@ -82,7 +83,7 @@ spec:
           value: REDIRECT
         - name: ISTIO_METAJSON_LABELS
           value: |
-            {"name":"carts-db"}
+            {"name":"carts-db","version":"v1"}
         image: gcr.io/istio-release/proxyv2:release-1.0-latest-daily
         imagePullPolicy: IfNotPresent
         name: istio-proxy
@@ -175,6 +176,7 @@ spec:
       creationTimestamp: null
       labels:
         name: carts
+        version: v1
     spec:
       containers:
       - env:
@@ -246,7 +248,7 @@ spec:
           value: REDIRECT
         - name: ISTIO_METAJSON_LABELS
           value: |
-            {"name":"carts"}
+            {"name":"carts","version":"v1"}
         image: gcr.io/istio-release/proxyv2:release-1.0-latest-daily
         imagePullPolicy: IfNotPresent
         name: istio-proxy
@@ -339,6 +341,7 @@ spec:
       creationTimestamp: null
       labels:
         name: catalogue-db
+        version: v1
     spec:
       containers:
       - env:
@@ -398,7 +401,7 @@ spec:
           value: REDIRECT
         - name: ISTIO_METAJSON_LABELS
           value: |
-            {"name":"catalogue-db"}
+            {"name":"catalogue-db","version":"v1"}
         image: gcr.io/istio-release/proxyv2:release-1.0-latest-daily
         imagePullPolicy: IfNotPresent
         name: istio-proxy
@@ -491,6 +494,7 @@ spec:
       creationTimestamp: null
       labels:
         name: catalogue
+        version: v1
     spec:
       containers:
       - image: weaveworksdemos/catalogue:0.3.5
@@ -553,7 +557,7 @@ spec:
           value: REDIRECT
         - name: ISTIO_METAJSON_LABELS
           value: |
-            {"name":"catalogue"}
+            {"name":"catalogue","version":"v1"}
         image: gcr.io/istio-release/proxyv2:release-1.0-latest-daily
         imagePullPolicy: IfNotPresent
         name: istio-proxy
@@ -641,6 +645,7 @@ spec:
       creationTimestamp: null
       labels:
         name: front-end
+        version: v1
     spec:
       containers:
       - image: weaveworksdemos/front-end:0.3.12
@@ -704,7 +709,7 @@ spec:
           value: REDIRECT
         - name: ISTIO_METAJSON_LABELS
           value: |
-            {"name":"front-end"}
+            {"name":"front-end","version":"v1"}
         image: gcr.io/istio-release/proxyv2:release-1.0-latest-daily
         imagePullPolicy: IfNotPresent
         name: istio-proxy
@@ -795,6 +800,7 @@ spec:
       creationTimestamp: null
       labels:
         name: orders-db
+        version: v1
     spec:
       containers:
       - image: mongo
@@ -861,7 +867,7 @@ spec:
           value: REDIRECT
         - name: ISTIO_METAJSON_LABELS
           value: |
-            {"name":"orders-db"}
+            {"name":"orders-db","version":"v1"}
         image: gcr.io/istio-release/proxyv2:release-1.0-latest-daily
         imagePullPolicy: IfNotPresent
         name: istio-proxy
@@ -954,6 +960,7 @@ spec:
       creationTimestamp: null
       labels:
         name: orders
+        version: v1
     spec:
       containers:
       - env:
@@ -1025,7 +1032,7 @@ spec:
           value: REDIRECT
         - name: ISTIO_METAJSON_LABELS
           value: |
-            {"name":"orders"}
+            {"name":"orders","version":"v1"}
         image: gcr.io/istio-release/proxyv2:release-1.0-latest-daily
         imagePullPolicy: IfNotPresent
         name: istio-proxy
@@ -1118,6 +1125,7 @@ spec:
       creationTimestamp: null
       labels:
         name: payment
+        version: v1
     spec:
       containers:
       - image: weaveworksdemos/payment:0.4.3
@@ -1180,7 +1188,7 @@ spec:
           value: REDIRECT
         - name: ISTIO_METAJSON_LABELS
           value: |
-            {"name":"payment"}
+            {"name":"payment","version":"v1"}
         image: gcr.io/istio-release/proxyv2:release-1.0-latest-daily
         imagePullPolicy: IfNotPresent
         name: istio-proxy
@@ -1270,6 +1278,7 @@ spec:
       creationTimestamp: null
       labels:
         name: queue-master
+        version: v1
     spec:
       containers:
       - image: weaveworksdemos/queue-master:0.3.1
@@ -1323,7 +1332,7 @@ spec:
           value: REDIRECT
         - name: ISTIO_METAJSON_LABELS
           value: |
-            {"name":"queue-master"}
+            {"name":"queue-master","version":"v1"}
         image: gcr.io/istio-release/proxyv2:release-1.0-latest-daily
         imagePullPolicy: IfNotPresent
         name: istio-proxy
@@ -1415,6 +1424,7 @@ spec:
       creationTimestamp: null
       labels:
         name: rabbitmq
+        version: v1
     spec:
       containers:
       - image: rabbitmq:3.6.8
@@ -1478,7 +1488,7 @@ spec:
           value: REDIRECT
         - name: ISTIO_METAJSON_LABELS
           value: |
-            {"name":"rabbitmq"}
+            {"name":"rabbitmq","version":"v1"}
         image: gcr.io/istio-release/proxyv2:release-1.0-latest-daily
         imagePullPolicy: IfNotPresent
         name: istio-proxy
@@ -1571,6 +1581,7 @@ spec:
       creationTimestamp: null
       labels:
         name: shipping
+        version: v1
     spec:
       containers:
       - env:
@@ -1642,7 +1653,7 @@ spec:
           value: REDIRECT
         - name: ISTIO_METAJSON_LABELS
           value: |
-            {"name":"shipping"}
+            {"name":"shipping","version":"v1"}
         image: gcr.io/istio-release/proxyv2:release-1.0-latest-daily
         imagePullPolicy: IfNotPresent
         name: istio-proxy
@@ -1735,6 +1746,7 @@ spec:
       creationTimestamp: null
       labels:
         name: user-db
+        version: v1
     spec:
       containers:
       - image: weaveworksdemos/user-db:0.4.0
@@ -1801,7 +1813,7 @@ spec:
           value: REDIRECT
         - name: ISTIO_METAJSON_LABELS
           value: |
-            {"name":"user-db"}
+            {"name":"user-db","version":"v1"}
         image: gcr.io/istio-release/proxyv2:release-1.0-latest-daily
         imagePullPolicy: IfNotPresent
         name: istio-proxy
@@ -1894,6 +1906,7 @@ spec:
       creationTimestamp: null
       labels:
         name: user
+        version: v1
     spec:
       containers:
       - env:
@@ -1959,7 +1972,7 @@ spec:
           value: REDIRECT
         - name: ISTIO_METAJSON_LABELS
           value: |
-            {"name":"user"}
+            {"name":"user","version":"v1"}
         image: gcr.io/istio-release/proxyv2:release-1.0-latest-daily
         imagePullPolicy: IfNotPresent
         name: istio-proxy
