@@ -44,3 +44,15 @@ kubectl exec -it $FORTIO_POD -nsock-shop -c fortio /usr/local/bin/fortio -- load
 kubectl exec -it $FORTIO_POD -nsock-shop -c fortio /usr/local/bin/fortio -- load -c 3 -qps 0 -n 20 -loglevel Warning http://front-end:80/index.html
 ```
   
+## Security - Mutual TLS
+
+1. Apply mesh-wide authentication policy in `default` namespace. This will enable all the receiving (server) sides of the service to use TLS.
+```
+istioctl create -f 5-global-mtls-mesh-policy.yaml
+```
+2. Load the front-end in browser. See that catalogues are not loading since `catalogue` service is rejecting plain-text `front-end` connections.
+3. Update all the destination-rules to use TLS. This will enable all the sender (client) sides of the services to use TLS.
+```
+istioctl replace -f 5-virtual-services-all-mtls.yaml
+```
+4. Load the front-end again. See that its fuctioning properly now.
