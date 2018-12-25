@@ -56,3 +56,19 @@ istioctl create -f 5-global-mtls-mesh-policy.yaml
 istioctl replace -f 5-virtual-services-all-mtls.yaml
 ```
 4. Load the front-end again. See that its fuctioning properly now.
+5. Verify that certs are automatically injected into sidecar proxies
+```
+kubectl exec -nsock-shop -c istio-proxy carts-66469c84c6-jj2zt -- ls /etc/certs
+cert-chain.pem    <-- cert to be presented to other side   
+key.pem           <-- side cars private key
+root-cert.pem     <-- root cert to verify peer's cert
+```
+6. Verify using istioctl
+```
+istioctl authn tls-check carts.sock-shop.svc.cluster.local -nsock-shop
+HOST:PORT                                STATUS     SERVER     CLIENT     AUTHN POLICY     DESTINATION RULE
+carts.sock-shop.svc.cluster.local:80     OK         mTLS       mTLS       default/         carts/sock-shop
+                                                                          ^Default mesh    ^Destination rule
+                                                                          policy since
+                                                                          namespace is blanck
+```
