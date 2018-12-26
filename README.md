@@ -4,8 +4,8 @@ Sockshop demo with Istio service mesh
 ## File details
 |Files|Description|
 |------|--------|
-|Sock-shop-complete-demo.yaml| contains all the changes required in sock-shop deployment to be compatible with Istio.|
-|sock-shop-complete-demo-istio-1.yaml| sock-shop deployment yaml spec with manually injected Istio|
+|[sock-shop-complete-demo.yaml](https://github.com/infracloudio/sockshop-istio/blob/master/sock-shop-complete-demo.yaml)| contains all the changes required in sock-shop deployment to be compatible with Istio.|
+|[sock-shop-complete-demo-istio-1.yaml](https://github.com/infracloudio/sockshop-istio/blob/master/sock-shop-complete-demo-istio-1.yaml)| sock-shop deployment yaml spec with manually injected Istio|
 
 ## Installation/Setup                                                                                                                                 
 
