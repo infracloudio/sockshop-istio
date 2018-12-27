@@ -7,7 +7,7 @@ Sockshop demo with Istio service mesh
 |[sock-shop-complete-demo.yaml](https://github.com/infracloudio/sockshop-istio/blob/master/sock-shop-complete-demo.yaml)| contains all the changes required in sock-shop deployment to be compatible with Istio.|
 |[sock-shop-complete-demo-istio-1.yaml](https://github.com/infracloudio/sockshop-istio/blob/master/sock-shop-complete-demo-istio-1.yaml)| sock-shop deployment yaml spec with manually injected Istio|
 
-## Installation/Setup                                                                                                                                 
+## 1. Installation/Setup                                                                                                                                 
 
 1. Install Istio-1.0.4 using helm charts.
 2. Run bellow command due for `catalogue` service to be able to connect to `catalogue-db`. More info : https://github.com/istio/istio/issues/10062
@@ -20,8 +20,16 @@ Sockshop demo with Istio service mesh
 ```                                                                                                                                                   
   kubectl apply -f sock-shop-complete-demo-istio-1.yaml
 ```
+## 2. Intelligent Routing (Canary Deployment)
+1. Apply version 2 of fron-end.
+```
+kubectl apply -f 2-front-end-deployment-v2-istio.yaml -nsock-shop
+```
+2. Update `front-end` istio VirtualService to route traffic to `front-end-v2`.
+```
+istioctl replace -f 2-front-end-deployment-v2-route.yaml -nsock-shop
 
-## Circuit Breaker Pattern
+## 4. Circuit Breaker Pattern
 
 1. Run Fortio app with 3 connections and 20 requests. See all requests go through
 ```
@@ -44,7 +52,7 @@ kubectl exec -it $FORTIO_POD -nsock-shop -c fortio /usr/local/bin/fortio -- load
 kubectl exec -it $FORTIO_POD -nsock-shop -c fortio /usr/local/bin/fortio -- load -c 3 -qps 0 -n 20 -loglevel Warning http://front-end:80/index.html
 ```
   
-## Security - Mutual TLS
+## 5. Security - Mutual TLS
 
 1. Apply mesh-wide authentication policy in `default` namespace. This will enable all the receiving (server) sides of the service to use TLS.
 ```
