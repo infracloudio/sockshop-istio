@@ -209,7 +209,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: front-end
+  name: front-end-v1
   namespace: sock-shop
 spec:
   replicas: 1
