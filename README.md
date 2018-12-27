@@ -28,6 +28,7 @@ kubectl apply -f 2-front-end-deployment-v2-istio.yaml -nsock-shop
 2. Update `front-end` istio VirtualService to route traffic to `front-end-v2`.
 ```
 istioctl replace -f 2-front-end-deployment-v2-route.yaml -nsock-shop
+```
 
 ## 4. Circuit Breaker Pattern
 
