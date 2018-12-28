@@ -1,6 +1,15 @@
 # sockshop-istio
 Sockshop demo with Istio service mesh
 
+- [sockshop-istio](#sockshop-istio)
+  * [File details](#file-details)
+  * [1. Installation/Setup](#1-installation-setup)
+  * [2. Intelligent Routing (Canary Deployment)](#2-intelligent-routing--canary-deployment-)
+  * [3. Circuit Breaker Pattern](#3-circuit-breaker-pattern)
+  * [4. Security - Mutual TLS](#4-security---mutual-tls)
+  * [5. Timeouts/Fault Injection](#5-timeouts-fault-injection)
+  * [6. Telemetry](#6-telemetry)
+  
 ## File details
 |Files|Description|
 |------|--------|
@@ -30,7 +39,7 @@ kubectl apply -f 2-front-end-deployment-v2-istio.yaml -nsock-shop
 istioctl replace -f 2-front-end-deployment-v2-route.yaml -nsock-shop
 ```
 
-## 4. Circuit Breaker Pattern
+## 3. Circuit Breaker Pattern
 
 1. Run Fortio app with 3 connections and 20 requests. See all requests go through
 ```
@@ -53,7 +62,7 @@ kubectl exec -it $FORTIO_POD -nsock-shop -c fortio /usr/local/bin/fortio -- load
 kubectl exec -it $FORTIO_POD -nsock-shop -c fortio /usr/local/bin/fortio -- load -c 3 -qps 0 -n 20 -loglevel Warning http://front-end:80/index.html
 ```
   
-## 5. Security - Mutual TLS
+## 4. Security - Mutual TLS
 
 1. Apply mesh-wide authentication policy in `default` namespace. This will enable all the receiving (server) sides of the service to use TLS.
 ```
@@ -81,3 +90,6 @@ carts.sock-shop.svc.cluster.local:80     OK         mTLS       mTLS       defaul
                                                                           policy since
                                                                           namespace is blanck
 ```
+## 5. Timeouts/Fault Injection
+
+## 6. Telemetry
