@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: carts
+  namespace: sock-shop
+spec:
+  hosts:
+  - carts
+  http:
+    - 
+      fault:
+        delay:
+          percent: 100
+          fixedDelay: 60s
+      route:
+      - destination:
+          host: carts
+          subset: v1

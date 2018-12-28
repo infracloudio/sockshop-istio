@@ -2,7 +2,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: carts
-  namespace: sock-shop
 spec:
   hosts:
   - carts
@@ -16,12 +15,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: carts
-  namespace: sock-shop
 spec:
   host: carts
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
   subsets:
   - name: v1
     labels:
@@ -31,7 +26,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: carts-db
-  namespace: sock-shop
 spec:
   hosts:
   - carts-db
@@ -45,12 +39,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: carts-db
-  namespace: sock-shop
 spec:
   host: carts-db
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
   subsets:
   - name: v1
     labels:
@@ -60,12 +50,15 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: catalogue
-  namespace: sock-shop
 spec:
   hosts:
   - catalogue
   http:
-  - route:
+  - fault:
+      delay:
+        percent: 100
+        fixedDelay: 60s
+    route:
     - destination:
         host: catalogue
         subset: v1
@@ -74,12 +67,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: catalogue
-  namespace: sock-shop
 spec:
   host: catalogue
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
   subsets:
   - name: v1
     labels:
@@ -89,7 +78,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: catalogue-db
-  namespace: sock-shop
 spec:
   hosts:
   - catalogue-db
@@ -103,12 +91,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: catalogue-db
-  namespace: sock-shop
 spec:
   host: catalogue-db
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
   subsets:
   - name: v1
     labels:
@@ -118,7 +102,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: front-end
-  namespace: sock-shop
 spec:
   hosts:
   - front-end
@@ -132,12 +115,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: front-end
-  namespace: sock-shop
 spec:
   host: front-end
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
   subsets:
   - name: v1
     labels:
@@ -147,7 +126,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: orders
-  namespace: sock-shop
 spec:
   hosts:
   - orders
@@ -161,12 +139,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: orders
-  namespace: sock-shop
 spec:
   host: orders
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
   subsets:
   - name: v1
     labels:
@@ -176,7 +150,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: orders-db
-  namespace: sock-shop
 spec:
   hosts:
   - orders-db
@@ -190,12 +163,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: orders-db
-  namespace: sock-shop
 spec:
   host: orders-db
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
   subsets:
   - name: v1
     labels:
@@ -205,7 +174,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: payment
-  namespace: sock-shop
 spec:
   hosts:
   - payment
@@ -219,12 +187,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: payment
-  namespace: sock-shop
 spec:
   host: payment
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
   subsets:
   - name: v1
     labels:
@@ -234,7 +198,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: queue-master
-  namespace: sock-shop
 spec:
   hosts:
   - queue-master
@@ -248,12 +211,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: queue-master
-  namespace: sock-shop
 spec:
   host: queue-master
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
   subsets:
   - name: v1
     labels:
@@ -263,7 +222,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: rabbitmq
-  namespace: sock-shop
 spec:
   hosts:
   - rabbitmq
@@ -277,12 +235,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: rabbitmq
-  namespace: sock-shop
 spec:
   host: rabbitmq
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
   subsets:
   - name: v1
     labels:
@@ -292,7 +246,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: shipping
-  namespace: sock-shop
 spec:
   hosts:
   - shipping
@@ -306,12 +259,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: shipping
-  namespace: sock-shop
 spec:
   host: shipping
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
   subsets:
   - name: v1
     labels:
@@ -321,7 +270,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: user
-  namespace: sock-shop
 spec:
   hosts:
   - user
@@ -335,12 +283,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: user
-  namespace: sock-shop
 spec:
   host: user
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
   subsets:
   - name: v1
     labels:
@@ -350,7 +294,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: user-db
-  namespace: sock-shop
 spec:
   hosts:
   - user-db
@@ -364,12 +307,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: user-db
-  namespace: sock-shop
 spec:
   host: user-db
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
   subsets:
   - name: v1
     labels:
