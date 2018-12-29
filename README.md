@@ -93,3 +93,48 @@ carts.sock-shop.svc.cluster.local:80     OK         mTLS       mTLS       defaul
 ## 5. Timeouts/Fault Injection
 
 ## 6. Telemetry
+
+### Prometheus
+1. Connect to prometheus
+```
+kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=prometheus -o jsonpath='{.items[0].metadata.name}') 9090:9090 &
+```
+2. Access Prometheus dashboard
+```
+http://localhost:9090/graph
+```
+3. Query for total requests to `catalogue` service
+```
+istio_requests_total{destination_service="catalogue.sock-shop.svc.cluster.local"}
+rate(istio_requests_total{destination_service=~"catalogue.*", response_code="200"}[5m])     <-- HTTP Success Rate to catalgue serivce for last 5 mins
+```
+### Grafana
+1. Connect to Grafana
+```
+kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000 &
+```
+2. Access Grafana dashboard
+```
+http://localhost:3000/dashboard/db/istio-mesh-dashboard 
+```
+
+### Jaeger
+1. Connect to Jaeger
+```
+kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=jaeger -o jsonpath='{.items[0].metadata.name}') 16686:16686 &
+```
+
+2. Access the dashboard
+```
+http://localhost:16686
+```
+
+### Kiali
+1. Connect to Kiali.
+```
+kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=kiali -o jsonpath='{.items[0].metadata.name}') 20001:20001 &
+```
+2. Access the dashboard (Default username/password: admin/admin)
+```
+http://localhost:20001/
+```
