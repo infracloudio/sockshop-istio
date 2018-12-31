@@ -108,6 +108,7 @@ spec:
   ports:
     # the port that this service should serve on
   - port: 80
+    name: http-carts
     targetPort: 80
   selector:
     name: carts
@@ -202,6 +203,7 @@ spec:
   ports:
     # the port that this service should serve on
   - port: 80
+    name: http-catalogue
     targetPort: 80
   selector:
     name: catalogue
@@ -250,6 +252,7 @@ spec:
   ports:
   - port: 80
     targetPort: 8079
+    name: http-front-end
     nodePort: 30001
   selector:
     name: front-end
@@ -364,6 +367,7 @@ spec:
   ports:
     # the port that this service should serve on
   - port: 80
+    name: http-orders
     targetPort: 80
   selector:
     name: orders
@@ -411,6 +415,7 @@ spec:
   ports:
     # the port that this service should serve on
   - port: 80
+    name: http-payment
     targetPort: 80
   selector:
     name: payment
@@ -451,6 +456,7 @@ spec:
   ports:
     # the port that this service should serve on
   - port: 80
+    name: http-queue-master
     targetPort: 80
   selector:
     name: queue-master
@@ -561,6 +567,7 @@ spec:
   ports:
     # the port that this service should serve on
   - port: 80
+    name: http-shipping
     targetPort: 80
   selector:
     name: shipping
@@ -666,6 +673,7 @@ spec:
   ports:
     # the port that this service should serve on
   - port: 80
+    name: http-user
     targetPort: 80
   selector:
     name: user

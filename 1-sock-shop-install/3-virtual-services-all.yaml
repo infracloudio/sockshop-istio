@@ -21,6 +21,7 @@ spec:
   - name: v1
     labels:
       version: v1
+      name: carts
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -45,6 +46,7 @@ spec:
   - name: v1
     labels:
       version: v1
+      name: carts-db
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -69,6 +71,7 @@ spec:
   - name: v1
     labels:
       version: v1
+      name: catalogue
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -93,6 +96,7 @@ spec:
   - name: v1
     labels:
       version: v1
+      name: catalogue-db
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -121,6 +125,7 @@ spec:
   - name: v1
     labels:
       version: v1
+      name: front-end
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -145,6 +150,7 @@ spec:
   - name: v1
     labels:
       version: v1
+      name: orders
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -169,6 +175,7 @@ spec:
   - name: v1
     labels:
       version: v1
+      name: orders-db
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -193,6 +200,7 @@ spec:
   - name: v1
     labels:
       version: v1
+      name: payment
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -217,6 +225,7 @@ spec:
   - name: v1
     labels:
       version: v1
+      name: queue-master
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -241,6 +250,7 @@ spec:
   - name: v1
     labels:
       version: v1
+      name: rabbitmq
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -265,6 +275,7 @@ spec:
   - name: v1
     labels:
       version: v1
+      name: shipping
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -289,6 +300,7 @@ spec:
   - name: v1
     labels:
       version: v1
+      name: user
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -313,3 +325,4 @@ spec:
   - name: v1
     labels:
       version: v1
+      name: user-db
