@@ -25,6 +25,8 @@ Sockshop demo with Istio service mesh
 
 ```                                                                                                                         
 kubectl apply -f 1-sock-shop-install/1-sock-shop-complete-demo-istio.yaml -nsock-shop
+kubectl apply -f 1-sock-shop-install/2-sockshop-gateway.yaml
+kubectl apply -f 1-sock-shop-install/3-virtual-services-all.yaml
 ```
 
 ### Note:
