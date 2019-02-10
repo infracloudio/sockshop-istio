@@ -25,8 +25,8 @@ Sockshop demo with Istio service mesh
 
 ```                                                                                                                         
 kubectl apply -f 1-sock-shop-install/1-sock-shop-complete-demo-istio.yaml -nsock-shop
-kubectl apply -f 1-sock-shop-install/2-sockshop-gateway.yaml
-kubectl apply -f 1-sock-shop-install/3-virtual-services-all.yaml
+istioctl create -f 1-sock-shop-install/2-sockshop-gateway.yaml -nsock-shop
+istioctl create -f 1-sock-shop-install/3-virtual-services-all.yaml -nsock-shop
 ```
 
 ### Note:
@@ -40,7 +40,6 @@ Bellow changes are made to sock-shop K8S deployment spec to work with Istio:
 kubectl delete meshpolicies.authentication.istio.io default
 ```
 4. Added `version: v1` labels to all deployments. (Required for Istio destination rules to work properly.)
-5. Front-end service changed to node port so that it can be accessed outside cluster.
 
 ## 2. Intelligent Routing 
 ### Blue/Green Deployment
