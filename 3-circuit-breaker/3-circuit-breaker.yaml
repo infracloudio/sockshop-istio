@@ -12,9 +12,3 @@ spec:
       http:
         http1MaxPendingRequests: 1
         maxRequestsPerConnection: 1  # KeepAlive is disabled
-    outlierDetection:
-      consecutiveErrors: 1        # If 1 error consecutively
-      interval: 1s                # check every 1 sec
-      baseEjectionTime: 3m        # remove pod for 3 mins for first time if not healthy, ejection time = baseEjectionTime * no. of times pod removed 
-      maxEjectionPercent: 100     # 100% ejection allowed meaning at max all the unhealthy pods can be removed.(Break the circuit to all faulty pods)
-                                  # how its different than k8s liveness probe?
