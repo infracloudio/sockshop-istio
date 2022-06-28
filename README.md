@@ -3,7 +3,6 @@ Sockshop demo with Istio service mesh
 
 - [sockshop-istio](#sockshop-istio)
   * [1. Installation/Setup](#1-installation-setup)
-    + [Note:](#note-)
   * [2. Intelligent Routing](#2-intelligent-routing)
     + [Blue/Green Deployment](#blue-green-deployment)
     + [Canary Deployment](#canary-deployment)
@@ -18,15 +17,20 @@ Sockshop demo with Istio service mesh
     + [Jaeger](#jaeger)
     + [Kiali](#kiali)
 
-## 1. Installation/Setup                                                                                                                                 
-
-1. Install Istio-1.0.4 using helm charts.
+## 1. Installation/Setup                                              
+1. Install Istio-1.13.2
 2. Deploy sock-shop application.
 
-```                                                                                                                         
-kubectl apply -f 1-sock-shop-install/1-sock-shop-complete-demo-istio.yaml -nsock-shop
-istioctl create -f 1-sock-shop-install/2-sockshop-gateway.yaml -nsock-shop
-istioctl create -f 1-sock-shop-install/3-virtual-services-all.yaml -nsock-shop
+```bash
+kubectl create namespace sock-shop
+kubectl label namespace sock-shop=enabled
+kubectl apply -f -n sock-shop ./1-sock-shop-instll
+```
+
+3. Check
+```
+INGRESS_HOST="$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')"
+echo "http://$INGRESS_HOST"
 ```
 
 ### Note:
